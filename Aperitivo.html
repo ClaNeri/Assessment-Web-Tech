@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking With Claudio</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
+        transition: background-color 0.3s, color 0.3s;
+      }
+    
+      .logo-container {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(to right, #78dfd0,#D1D9E0, #f67280);
+        padding: 12px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    
+      .logo-text {
+        color: #FFF; /* Ensures high contrast and visibility against darker backgrounds. */
+        font-size: 1.5rem; /* Uses rem for scalable and responsive design, ensuring better accessibility. */
+        font-weight: bold; /* Highlights the text with boldness for emphasis. */
+        letter-spacing: 0.05em; /* Enhances readability by spacing out letters slightly. */
+        margin-left: 1rem; /* Provides spatial separation from elements, using rem for consistency in scaling. */
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Enhanced shadow for greater depth and legibility. */
+        font-style: italic; /* Applies an italic style to give the text a stylized appearance. */
+      }
+    
+      .dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+    
+      .header {
+        padding: 12px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #f4f4f4;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s;
+      }
+    
+      .search-container {
+        position: relative;
+      }
+    
+      .search-bar {
+        padding: 5px;
+        font-size: 16px;
+      }
+    
+      .nav {
+        padding: 12px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #454545;
+        color: white;
+        padding: 5px 0;
+        display: flex;
+        justify-content: center;
+        display: flex;
+        align-items: center; /* This ensures that children align in the middle */
+        height: 33px; /* Adjust this value as needed to match your desired nav bar height */
+      }
+    
+      .nav-item {
+        margin: 0 10px;
+        text-decoration: none;
+        color: white;
+      }
+    
+      .nav-item:hover {
+        text-decoration: underline;
+      }
+    
+      .dark-mode .nav {
+        background-color: #454545;
+      }
+    
+      .toggle-dark-mode {
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #eee;
+        border: none;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+    
+      .dark-mode {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    
+    .dark-mode .header,
+    .dark-mode .footer,
+    .dark-mode .nav,
+    .dark-mode .breadcrumb,
+    .dark-mode .column,
+    .dark-mode .toggle-dark-mode {
+        background-color: #454545; /* Darker shade for dark mode */
+        color: #e0e0e0; /* Lighter text for better readability */
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
+    }
+    
+    .dark-mode .nav-item,
+    .dark-mode .footer-links a,
+    .dark-mode .breadcrumb a {
+        color: #e0e0e0;
+    }
+    
+    .dark-mode .nav-item:hover,
+    .dark-mode .footer-links a:hover,
+    .dark-mode .breadcrumb a:hover {
+        color: #78dfd0; /* A lighter color for hover effects */
+        text-decoration: underline;
+    }
+    
+     
+      .footer {
+        padding: 12px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #454545;
+        color: #fff;
+        text-align: center;
+        padding: 0px;
+        position: relative;
+        width: 100%;
+        transition: background-color 0.3s;
+      }
+    
+      .footer-links a, .footer p a {
+        color: #fff; /* Ensures links are white */
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+    
+      .footer-links a:hover, .footer p a:hover {
+        color: #f67280; /* Lighter color on hover */
+      }
+      /*Nav with Sub link */
+
+      .nav-item,
+      .dropbtn {
+        margin: 0 10px;
+        text-decoration: none;
+        color: white; /* Ensure text color is white */
+        cursor: pointer;
+      }
+
+      /* Dropdown container */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Dropdown button */
+      .dropbtn {
+        background-color: #454545; /* Dropdown background */
+        padding: 12px 16px;
+        border-radius: 30px; /* Rounded corners for the dropdown button */
+      }
+
+      /* Dropdown content container */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #454545; /* Match nav background */
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+
+      /* Dropdown content links */
+      .dropdown-content a {
+        color: white; /* Set text color to white for dropdown links */
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      /* Hover state for dropdown links */
+      .dropdown-content a:hover {
+        background-color: #f1f1f1; /* Light background on hover for contrast */
+        color: #333; /* Dark text color for readability on light background */
+      }
+
+      /* Display the dropdown content when hovering over the dropdown container */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+
+      .breadcrumb {
+        background-color: #333;
+        color: #fff;
+        border-radius: 15px;
+        display: inline-block;
+        padding: 5px 15px;
+        font-size: 0.9em;
+      }
+      
+      .breadcrumb a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold; /* Bold text for links */
+      }
+      
+      .breadcrumb a:hover {
+        text-decoration: underline; /* Underline on hover for links */
+      }
+
+      
+      .recipe-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 20px auto;
+    }
+    
+      .column {
+        /* Adjust flex properties as necessary */
+        margin: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc; /* Example border addition if not already present */
+    }
+  
+    .column.ingredients,
+    .column.preparation-time {
+        flex-basis: 100%;
+    }
+    
+    .column.preparation,
+    .column.image-container {
+        flex: 1;
+    }
+  
+      .preparation-details {
+        flex-grow: 1;
+      }
+  
+      .column.image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .column.image-container img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+  
+      .preparation-time {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid #eee;
+        margin-top: 20px;
+        flex-grow: 0;
+      }
+
+      .left-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+    }
+    
+    /* New container for right side */
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+    }
+    
+    /* Style adjustments for columns in left container */
+    .left-container .column {
+        margin: 10px 10px 10px 0; /* Adjust the margin as needed */
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    
+    /* Style adjustments for columns in right container */
+    .right-container .column {
+        margin: 10px 0 10px 10px; /* Adjust the margin as needed */
+        padding: 40px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    .title-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .title-image {
+        max-width: 50%; /* Adjust the size as needed */
+        height: auto; /* Keep the aspect ratio */
+        display: block; /* Allows margin to be applied properly */
+        margin: 0 auto; /* Center the image */
+        border-radius: 20px; /* Optional: if you want rounded corners */
+        border: 3px solid fff; /* Example border: 3px solid and colored with your theme */
+    }
+    
+      
+    </style>
+</head>
+<body>
+
+<header class="header" style="display: flex; justify-content: space-between; align-items: center; background-color: #f4f4f4; padding: 12px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 30px;">
+    <div class="logo-container" style="display: flex; align-items: center;">
+            
+        <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+            <img src="logo3.png" alt="Cooking Logo" width="32" height="43">
+            <div class="logo-text" style="margin-left: 10px; font-size: 1.5rem; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-style: italic;">Cooking With Claudio</div>
+        </a>
+    </div>
+    <div class="search-container" style="position: relative;">
+        <input type="text" class="search-bar" placeholder="Search..." style="font-size: 1rem; padding: 5px;">
+        <button onclick="search()" style="cursor: pointer; padding: 5px 10px; margin-left: 5px;">Go</button>
+    </div>
+</header>
+
+<div class="breadcrumb" style="background-color: #454545; border-radius: 20px; display: inline-block; padding: 5px 15px; font-size: 0.9em; color: white;">
+    <a href="index.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Home</a>
+    <span style="color: #D1D9E0;"> &gt; </span>
+    <a href="Aperitivo.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Aperitivo</a>
+    <span style="color: #D1D9E0;"> &gt; </span>
+    <a href="Aperitivo.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Panelle Siciliane</a>
+    <span style="color: #D1D9E0;"> &gt; </span>
+</div>
+
+<div>
+<button class="toggle-dark-mode" onclick="toggleDarkMode()" style="padding: 10px 20px; background-color: #D1D9E0; border: none; font-size: 16px; border-radius: 20px;">Dark Mode ⚫</button>
+<div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-item">Home</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="dropbtn">Food Categories</a>
+        <div class="dropdown-content">
+            <a href="Antipasto.html">Antipasto</a>
+            <a href="Primo.html">Primo</a>
+            <a href="secondo.html">Secondo</a>
+        </div>
+    </div>
+    <a href="Foodblog.html" class="nav-item">Food Blog</a>
+    <a href="Api.html" class="nav-item">Meal Plan</a>
+    <a href="#" class="nav-item">Other</a>
+</nav>
+
+<h1 class="title-container">
+    Panelle Siciliane
+</h1>
+<div class="recipe-container">
+    <div class="column image-container" style="max-width: 50%; margin: auto;"> <!-- Adjust width and margin to center and size the image -->
+        <img src="panelle.png" alt="Linguine with Lobster" class="title-image">
+    </div>
+</div>
+
+
+<div class="recipe-container">
+    <div class="column preparation-time">
+      <h2>Information</h2>
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <th onclick="showInformation()" style="cursor: pointer; background-color: #78dfd0; color: #fff; padding: 10px; text-align: left;">Preparation Time</th>
+          <th onclick="showIngredients()" style="cursor: pointer; background-color: #D1D9E0; color: #fff; padding: 10px; text-align: left;">Ingredients</th>
+          <th onclick="showMethod()" style="cursor: pointer; background-color: #f67280; color: #fff; padding: 10px; text-align: left;">Preparation</th>
+        </tr>
+        <tr>
+          <td colspan="3" id="content-cell" style="padding: 10px; background-color: #f8f8f8; color: #333;">
+            <!-- Default content goes here -->
+            Click on a tab to show information.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+<script>
+// JavaScript to change the content of the table
+function showInformation() {
+  document.getElementById('content-cell').innerHTML = `
+  <p>Difficulty: Medium</p>
+  <p>Cooking Time: 45 Min</p>
+  <p>Portions: 8 People</p>
+  <p>Cost: Cheap</p>
+  <p>Calories for Portions: 452 Kcal</p>`;
+}
+
+function showIngredients() {
+  document.getElementById('content-cell').innerHTML = `
+      <p>Chickpea Flour: 500g</p>
+      <p>Water: 1,4 liter</p>
+      <p>Lobster: 2 Lobster Tails</p>
+      <p>Extra virgin olive oil: 30g</p>
+      <p>Seed Oil: To Fry</p>
+      <p>Parsley: 60g</p>
+      <p>Salt: to taste</p>
+      <p>Black Pepper: to taste</p>`;
+}
+
+
+function showMethod() {
+  document.getElementById('content-cell').innerHTML = `
+      <p>To prepare panelle, start by adding 1.4 liters of water to a pot. Gradually pour in the chickpea flour, stirring continuously until the flour is fully dissolved.</p>
+      <p>Turn on the heat and continue to stir the mixture until it thickens into a puree, which should take about 45 minutes, add some parslay. </p>
+      <p> Once ready, pour the mixture into a baking tray and let it rest for 4 hours to firm up.</p> 
+      <p>After resting, slice the set mixture and fry until golden.</p>
+      <p> Your Panelle are now ready to enjoy!</p>
+      <p>Buon Appetito!</p>
+      <p>Don't forget a nice Beer!</p>
+      `;
+}
+
+</script>
+  
+      
+
+<footer class="footer">
+    <div class="footer-links">
+    </div>
+    <p>&copy; 2024 Cooking With Claudio. | <a href="Aboutus.html" target="_blank">About Us</a> | <a href="Contactus.html" target="_blank">Contact Us</a> |
+</footer>
+
+<script>
+  const pages = [
+      { title: "Home", url: "index.html" },
+      { title: "Antipasto", url: "Antipasto.html" },
+      { title: "Primo", url: "Primo.html" },
+      { title: "Secondo", url: "Secondo.html" },
+      { title: "Meal Plan", url: "Api.html" },
+      { title: "Food Blog", url: "Foodblog.html" }, // Adjust the URL as needed
+      { title: "Other", url: "Other.html" },
+      { title: "About us", url: "Aboutus.html" },
+      { title: "Contact us", url: "Contactus.html" } // Adjust the URL as needed
+    ];
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  // Update the button text based on the current theme
+  const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+  document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+}
+
+function search() {
+  var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+  const page = pages.find(p => p.title.toLowerCase().includes(query));
+  if (page) {
+    window.location.href = page.url; // Redirect to the found page
+  } else {
+    alert('No match found');
+  }
+}
+  </script>
+</body>
+</html>
+
+    

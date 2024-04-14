@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking With Claudio</title>
+<style>
+
+    /*Logo code*/
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #78dfd0,#D1D9E0, #f67280);
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo-text {
+    color: #FFF; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    letter-spacing: 0.05em; 
+    margin-left: 1rem; 
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
+    font-style: italic; 
+  }
+  
+  .header {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+
+   /*Dark mode*/
+   .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .toggle-dark-mode {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .dark-mode .toggle-dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .dark-mode .nav {
+    background-color: #454545;
+  }
+
+  .text {
+    --bg-color: #f4f4f4; /* Updated background color */
+    --text-color: #333;
+   }
+  
+  .dark-mode {
+    --bg-color: #454545; /* Dark mode background */
+    --text-color: #e0e0e0; /* Dark mode text color */
+  }
+   
+    /*Search bar code*/
+  .search-container {
+    position: relative;
+  }
+
+  .search-bar {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+   /* Navigator code*/
+  .nav {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    align-items: center; 
+    height: 33px; 
+  }
+
+  .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+
+  /*Footer code*/
+  .footer {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .footer-links a, .footer p a {
+    color: #fff; 
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover, .footer p a:hover {
+    color: #f67280; 
+  }
+    /*Recipe code section*/
+  .recipe-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+
+  .recipe-card {
+    flex: 1 1 calc(25% - 40px);
+    margin: 10px;
+    height: 200px;
+    position: relative;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .recipe-card img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .recipe-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .recipe-card h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  /*Navigator bar with Sub link */
+
+  .nav-item,
+  .dropbtn {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white; /* Ensure text color is white */
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: #454545; /* Dropdown background */
+    padding: 12px 16px;
+    border-radius: 30px; /* Rounded corners for the dropdown button */
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #454545; /* Match nav background */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: white; /* Set text color to white for dropdown links */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1; 
+    color: #333; 
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  /*Video Code*/
+  #videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+</style>
+</head>
+<body>
+
+<header class="header" style="display: flex; justify-content: space-between; align-items: center; background-color: #f4f4f4; padding: 12px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 30px;">
+    <div class="logo-container" style="display: flex; align-items: center;">
+        
+        <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+            <img src="logo3.png" alt="Cooking Logo" width="32" height="43">
+            <div class="logo-text" style="margin-left: 10px; font-size: 1.5rem; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-style: italic;">Cooking With Claudio</div>
+        </a>
+    </div>
+    <div class="search-container" style="position: relative;">
+        <input type="text" class="search-bar" placeholder="Search..." style="font-size: 1rem; padding: 5px;">
+        <button onclick="search()" style="cursor: pointer; padding: 5px 10px; margin-left: 5px;">Go</button>
+    </div>
+</header>
+    
+<div>
+  <button class="toggle-dark-mode" onclick="toggleDarkMode()" style="padding: 10px 20px; background-color: #D1D9E0; border: none; font-size: 16px; border-radius: 20px;">Dark Mode ⚫</button>
+<div>
+
+<nav class="nav">
+    <a href="index.html" class="nav-item">Home</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="dropbtn">Food Categories</a>
+        <div class="dropdown-content">
+            <a href="Antipasto.html">Antipasto</a>
+            <a href="Primo.html">Primo</a>
+            <a href="Secondo.html">Secondo</a>
+        </div>
+    </div>
+    <a href="Foodblog.html" class="nav-item">Food Blog</a>
+    <a href="Api.html" class="nav-item">Meal Plan</a>
+    <a href="other.html" class="nav-item">Other</a>
+</nav>
+
+<div class="recipe-section">
+    <div class="recipe-card">
+      <a href="Special.html" target="_blank"><img src="carbonara.jpg" alt="Special of the Day">
+      <h3>Special of the Day</h3></a>
+    </div>
+    <div class="recipe-card">
+      <a href="Aperitivo.html" target="_blank"><img src="Aperitivo2.png" alt="Aperitivo">
+      <h3>Aperitivo</h3></a>
+    </div>
+    <div class="recipe-card">
+      <a href="Dessert.html" target="_blank"><img src="dessert.png" alt="Dessert">
+      <h3>Dessert</h3></a>
+    </div>
+    <div class="recipe-card">
+      <a href="Fish.html" target="_blank"><img src="update-recipe.jpg" alt="Update Recipe">
+      <h3>Fish Recipe</h3></a>
+    </div>
+  </div>
+
+<div class="about-site" style="padding: 20px; text-align: center; background-color: var(--bg-color); color: var(--text-color); margin: 20px auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h2 style="margin-bottom: 0.5em;">Welcome to Cooking With Claudio</h2>
+    <p style="font-size: 1.1em; line-height: 1.6;">Discover the essence of Italian cooking with 'Cooking With Claudio.'</p>
+    <p style="font-size: 1.1em; line-height: 1.6;">Dive into our video series for easy-to-follow Italian recipes, bringing the taste of Italy right to your kitchen. Perfect for Italian cuisine lovers of all skill levels.</p>
+</div>
+
+<div id="videoContainer">
+  <!-- The iframe will be inserted here by the JavaScript -->
+</div>
+
+<footer class="footer">
+    <div class="footer-links"> 
+    </div>
+    <p>&copy; 2024 Cooking With Claudio. | <a href="Aboutus.html" target="_blank">About Us</a> | <a href="Contactus.html" target="_blank">Contact Us</a> |
+</footer>
+
+<script>
+    // Search bar JavaScript
+  const pages = [
+      { title: "Home", url: "index.html" },
+      { title: "Antipasto", url: "Antipasto.html" },
+      { title: "Primo", url: "Primo.html" },
+      { title: "Secondo", url: "Secondo.html" },
+      { title: "Meal Plan", url: "Api.html" },
+      { title: "Food Blog", url: "Foodblog.html" }, 
+      { title: "Other", url: "other.html" },
+      { title: "About us", url: "Aboutus.html" },
+      { title: "Contact us", url: "Contactus.html" },
+      { title: "Special of the Day", url: "Special.html" },
+      { title: "Dessert", url: "Dessert.html" },
+      { title: "Aperitivo", url: "Aperitivo.html" },
+      { title: "Fish Recipes", url: "Fish.html" }
+      
+    ];
+    // togglerDarkMode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+      document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+    }
+    // Searcher query JavaScript
+    function search() {
+      var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+      const page = pages.find(p => p.title.toLowerCase().includes(query));
+      if (page) {
+        window.location.href = page.url; 
+      } else {
+        alert('No match found');
+      }
+    }
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var videoId = 'DkXOAjro1_Q';
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('width', '560'); 
+        iframe.setAttribute('height', '315'); 
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', true);
+        document.getElementById('videoContainer').appendChild(iframe);
+    });
+    </script>
+</body>
+</html>
+

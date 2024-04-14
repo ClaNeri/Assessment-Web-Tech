@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking With Claudio</title>
+<style>
+  /*Logo code*/
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #78dfd0,#D1D9E0, #f67280);
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo-text {
+    color: #FFF; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    letter-spacing: 0.05em; 
+    margin-left: 1rem; 
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
+    font-style: italic; 
+  }
+  
+  .header {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+
+
+  
+   /*Dark mode*/
+   .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .toggle-dark-mode {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .dark-mode .toggle-dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .dark-mode .nav {
+    background-color: #454545;
+  }
+
+  .text {
+    --bg-color: #f4f4f4; 
+    --text-color: #333;
+   }
+  
+  .dark-mode {
+    --bg-color: #454545; 
+    --text-color: #e0e0e0; 
+  }
+   
+    /*Search bar code*/
+  .search-container {
+    position: relative;
+  }
+
+  .search-bar {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+   /* Navigator code*/
+  .nav {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    align-items: center; 
+    height: 33px; 
+  }
+
+  .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+
+  /*Footer code*/
+  .footer {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .footer-links a, .footer p a {
+    color: #fff; /* Ensures links are white */
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover, .footer p a:hover {
+    color: #f67280; /* Lighter color on hover */
+  }
+
+/*Navigator bar with Sub link */
+
+  .nav-item,
+  .dropbtn {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white; 
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: #454545; 
+    padding: 12px 16px;
+    border-radius: 30px; 
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #454545; 
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: white; 
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1; 
+    color: #333; 
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  /*Contact us code*/
+  .form-container {
+    padding: 20px;
+    background-color: white;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  /*Dark mode for comment table*/
+  .dark-mode .form-container {
+    background-color: #333; /* Dark background for the form */
+    color: #e0e0e0; /* Light text color for readability */
+  }
+  
+  .dark-mode input,
+  .dark-mode textarea {
+    background-color: #555; /* Darker background for input fields */
+    color: #e0e0e0; /* Light text color for input fields */
+    border: 1px solid #777; /* Adjusted border color for contrast */
+  }
+  
+  .dark-mode input[type="submit"] {
+    background-color: #28a745; /* A green that looks good on dark backgrounds */
+    color: #e0e0e0; /* White text color for the submit button */
+  }
+  
+  .dark-mode input[type="submit"]:hover {
+    background-color: #218838; /* A slightly darker green for the hover state */
+  }
+</style>
+</head>
+<body>
+
+    <header class="header" style="display: flex; justify-content: space-between; align-items: center; background-color: #f4f4f4; padding: 12px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 30px;">
+        <div class="logo-container" style="display: flex; align-items: center;">
+            
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+                <img src="logo3.png" alt="Cooking Logo" width="32" height="43">
+                <div class="logo-text" style="margin-left: 10px; font-size: 1.5rem; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-style: italic;">Cooking With Claudio</div>
+            </a>
+        </div>
+        <div class="search-container" style="position: relative;">
+            <input type="text" class="search-bar" placeholder="Search..." style="font-size: 1rem; padding: 5px;">
+            <button onclick="search()" style="cursor: pointer; padding: 5px 10px; margin-left: 5px;">Go</button>
+        </div>
+    </header>
+
+    <div class="breadcrumb" style="background-color: #454545; border-radius: 20px; display: inline-block; padding: 5px 15px; font-size: 0.9em; color: white;">
+      <a href="index.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Home</a>
+      <span style="color: #D1D9E0;"> &gt; </span>
+      <a href="Contactus.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Contact Us</a>
+      <span style="color: #D1D9E0;"> &gt; </span>
+    </div>
+        
+    
+    <div>
+      <button class="toggle-dark-mode" onclick="toggleDarkMode()" style="padding: 10px 20px; background-color: #D1D9E0; border: none; font-size: 16px; border-radius: 20px;">Dark Mode ⚫</button>
+    <div>
+    
+      <nav class="nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <div class="nav-item dropdown">
+            <a href="#" class="dropbtn">Food Categories</a>
+            <div class="dropdown-content">
+                <a href="Antipasto.html">Antipasto</a>
+                <a href="Primo.html">Primo</a>
+                <a href="Secondo.html">Secondo</a>
+            </div>
+        </div>
+        <a href="Foodblog.html" class="nav-item">Food Blog</a>
+        <a href="Api.html" class="nav-item">Meal Plan</a>
+        <a href="other.html" class="nav-item">Other</a>
+    </nav>
+
+    <div class="form-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email">
+    
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+
+
+<footer class="footer">
+    <div class="footer-links">
+    </div>
+    <p>&copy; 2024 Cooking With Claudio. | <a href="Aboutus.html" target="_blank">About Us</a> | <a href="Contactus.html" target="_blank">Contact Us</a> |
+</footer>
+    
+
+<script>
+  //url for search bar
+  const pages = [
+  { title: "Home", url: "index.html" },
+  { title: "Antipasto", url: "Antipasto.html" },
+  { title: "Primo", url: "Primo.html" },
+  { title: "Secondo", url: "Secondo.html" },
+  { title: "Meal Plan", url: "Api.html" },
+  { title: "Food Blog", url: "Foodblog.html" }, 
+  { title: "Other", url: "other.html" },
+  { title: "About us", url: "Aboutus.html" },
+  { title: "Contact us", url: "Contactus.html" },
+  { title: "Special of the Day", url: "Special.html" },
+  { title: "Dessert", url: "Dessert.html" },
+  { title: "Aperitivo", url: "Aperitivo.html" },
+  { title: "Fish Recipes", url: "Fish.html" }
+  
+];
+    // dark mode JavaScript
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+      document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+    }
+    
+    // search bar navigator
+    function search() {
+      var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+      const page = pages.find(p => p.title.toLowerCase().includes(query));
+      if (page) {
+        window.location.href = page.url;
+      } else {
+        alert('No match found');
+      }
+    }
+  </script>
+  <script>
+    //allert in JavaScript
+    document.getElementById("contactForm").addEventListener("submit", function(event){
+        event.preventDefault(); // Prevent actual form submission
+        alert('Thank you for your submission!');   
+    });
+</script>
+</body>
+</html>
+

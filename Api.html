@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking With Claudio</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #78dfd0,#D1D9E0, #f67280);
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo-text {
+    color: #FFF; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    letter-spacing: 0.05em; 
+    margin-left: 1rem; 
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
+    font-style: italic; 
+  }
+
+  .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .header {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+
+  .search-container {
+    position: relative;
+  }
+
+  .search-bar {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .nav {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    align-items: center; /* This ensures that children align in the middle */
+    height: 33px; /* Adjust this value as needed to match your desired nav bar height */
+  }
+
+  .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+
+  .dark-mode .nav {
+    background-color: #454545;
+  }
+
+  .toggle-dark-mode {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .header,
+.dark-mode .footer,
+.dark-mode .nav,
+.dark-mode .breadcrumb,
+.dark-mode .column,
+.dark-mode .toggle-dark-mode {
+    background-color: #454545; /* Darker shade for dark mode */
+    color: #e0e0e0; /* Lighter text for better readability */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
+}
+
+.dark-mode .nav-item,
+.dark-mode .footer-links a,
+.dark-mode .breadcrumb a {
+    color: #e0e0e0;
+}
+
+.dark-mode .nav-item:hover,
+.dark-mode .footer-links a:hover,
+.dark-mode .breadcrumb a:hover {
+    color: #78dfd0; /* A lighter color for hover effects */
+    text-decoration: underline;
+}
+
+ 
+  .footer {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .footer-links a, .footer p a {
+    color: #fff; /* Ensures links are white */
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover, .footer p a:hover {
+    color: #f67280; /* Lighter color on hover */
+  }
+  /*Nav with Sub link */
+
+  .nav-item,
+  .dropbtn {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white; /* Ensure text color is white */
+    cursor: pointer;
+  }
+
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Dropdown button */
+  .dropbtn {
+    background-color: #454545; /* Dropdown background */
+    padding: 12px 16px;
+    border-radius: 30px; /* Rounded corners for the dropdown button */
+  }
+
+  /* Dropdown content container */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #454545; /* Match nav background */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Dropdown content links */
+  .dropdown-content a {
+    color: white; /* Set text color to white for dropdown links */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Hover state for dropdown links */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1; /* Light background on hover for contrast */
+    color: #333; /* Dark text color for readability on light background */
+  }
+
+  /* Display the dropdown content when hovering over the dropdown container */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+      
+      #mealPlan {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .meal {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        width: 300px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+
+    .meal h3 {
+        color: #0077cc;
+    }
+
+    .meal img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    #fetchMealPlan {
+        background-color: #0077cc;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #fetchMealPlan:hover {
+        background-color: #005fa3;
+    }
+
+    .description-container {
+      text-align: center;
+      padding: 30px;
+      background-color: #fff; /* Adjust the background color as needed */
+      margin: 30px auto;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      width: 80%;
+      max-width: 800px; /* Maximum width of the description container */
+    }
+
+    .description-title {
+      font-size: 2rem; /* Title size */
+      color: #333; /* Title color */
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .description {
+      font-size: 1rem; /* Description text size */
+      color: #333; /* Description text color */
+      line-height: 1.6; /* Line height for better readability */
+    }
+    </style>
+  </head>
+  <body>
+
+    <header class="header" style="display: flex; justify-content: space-between; align-items: center; background-color: #f4f4f4; padding: 12px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 30px;">
+      <div class="logo-container" style="display: flex; align-items: center;">
+              
+          <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+              <img src="logo3.png" alt="Cooking Logo" width="32" height="43">
+              <div class="logo-text" style="margin-left: 10px; font-size: 1.5rem; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-style: italic;">Cooking With Claudio</div>
+          </a>
+      </div>
+      <div class="search-container" style="position: relative;">
+          <input type="text" class="search-bar" placeholder="Search..." style="font-size: 1rem; padding: 5px;">
+          <button onclick="search()" style="cursor: pointer; padding: 5px 10px; margin-left: 5px;">Go</button>
+      </div>
+  </header>
+  
+  <div class="breadcrumb" style="background-color: #454545; border-radius: 20px; display: inline-block; padding: 5px 15px; font-size: 0.9em; color: white;">
+      <a href="index.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Home</a>
+      <span style="color: #D1D9E0;"> &gt; </span>
+      <a href="Api.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Meal Plan</a>
+      <span style="color: #D1D9E0;"> &gt; </span>
+  </div>
+  
+  <div>
+  <button class="toggle-dark-mode" onclick="toggleDarkMode()" style="padding: 10px 20px; background-color: #D1D9E0; border: none; font-size: 16px; border-radius: 20px;">Dark Mode ⚫</button>
+  <div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item dropdown">
+          <a href="#" class="dropbtn">Food Categories</a>
+          <div class="dropdown-content">
+              <a href="Antipasto.html">Antipasto</a>
+              <a href="Primo.html">Primo</a>
+              <a href="Secondo.html">Secondo</a>
+          </div>
+      </div>
+      <a href="Foodblog.html" class="nav-item">Food Blog</a>
+      <a href="Api.html" class="nav-item">Meal Plan</a>
+      <a href="other.html" class="nav-item">Other</a>
+  </nav>
+
+  
+    <h1>Meal Plan Based on Calories</h1>
+    <label for="calories">Enter desired calories for the meal plan:</label>
+    <input type="number" id="calories" placeholder="e.g., 2000">
+    <button id="fetchMealPlan">Get Meal Plan</button>
+    <div id="mealPlan"></div>
+
+    <div class="description-container">
+      <p class="description-title">Calories Counting Recipes</p>
+      <p class="description">This webpage is designed to provide you with random recipes using the Spoonacular API, tailored to your specific caloric intake for a meal. It generates a complete meal consisting of three courses: a starter, a main course, and a dessert. Enjoy crafting your meal!</p>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+      </div>
+      <p>&copy; 2024 Cooking With Claudio. | <a href="Aboutus.html" target="_blank">About Us</a> | <a href="Contactus.html" target="_blank">Contact Us</a> |
+  </footer>
+
+
+  <script>
+    document.getElementById('fetchMealPlan').addEventListener('click', function() {
+        const calories = document.getElementById('calories').value;
+        fetchMealPlan(calories);
+    });
+
+    function fetchMealPlan(calories) {
+        const apiKey = '9f6b0aa5042b489591f4c3490e0f0397'; // Replace with your actual Spoonacular API key
+        const url = `https://api.spoonacular.com/mealplanner/generate?targetCalories=${calories}&timeFrame=day&apiKey=${apiKey}`;
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayMealPlan(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    }
+
+    function displayMealPlan(data) {
+        let content = '';
+        data.meals.forEach(meal => {
+            const recipeUrl = `https://spoonacular.com/recipes/${meal.title}-${meal.id}`; // Ensure the URL format is correct as per API documentation
+            
+            content += `<div class="meal">
+                            <h3><a href="${recipeUrl}" target="_blank">${meal.title}</a></h3>
+                            <img src="https://spoonacular.com/recipeImages/${meal.id}-312x231.${meal.imageType}" alt="${meal.title}">
+                        </div>`;
+        });
+
+        document.getElementById('mealPlan').innerHTML = content;
+    }
+</script>
+  
+  <script>
+    const pages = [
+      { title: "Home", url: "index.html" },
+      { title: "Antipasto", url: "Antipasto.html" },
+      { title: "Primo", url: "Primo.html" },
+      { title: "Secondo", url: "Secondo.html" },
+      { title: "Meal Plan", url: "Api.html" },
+      { title: "Food Blog", url: "Foodblog.html" }, // Adjust the URL as needed
+      { title: "Other", url: "other.html" },
+      { title: "About us", url: "Aboutus.html" },
+      { title: "Contact us", url: "Contactus.html" },
+      { title: "Special of the Day", url: "Special.html" },
+      { title: "Dessert", url: "Dessert.html" },
+      { title: "Aperitivo", url: "Aperitivo.html" },
+      { title: "Fish Recipes", url: "Fish.html" }
+      
+    ];
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    // Update the button text based on the current theme
+    const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+    document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+  }
+  
+  function search() {
+    var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+    const page = pages.find(p => p.title.toLowerCase().includes(query));
+    if (page) {
+      window.location.href = page.url; // Redirect to the found page
+    } else {
+      alert('No match found');
+    }
+  }
+    </script>
+  </body>
+  </html>
+  
+      

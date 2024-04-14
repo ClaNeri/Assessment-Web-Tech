@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking With Claudio</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #78dfd0,#D1D9E0, #f67280);
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo-text {
+    color: #FFF; /* Ensures high contrast and visibility against darker backgrounds. */
+    font-size: 1.5rem; /* Uses rem for scalable and responsive design, ensuring better accessibility. */
+    font-weight: bold; /* Highlights the text with boldness for emphasis. */
+    letter-spacing: 0.05em; /* Enhances readability by spacing out letters slightly. */
+    margin-left: 1rem; /* Provides spatial separation from elements, using rem for consistency in scaling. */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Enhanced shadow for greater depth and legibility. */
+    font-style: italic; /* Applies an italic style to give the text a stylized appearance. */
+  }
+
+  .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .header {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+
+  .search-container {
+    position: relative;
+  }
+
+  .search-bar {
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .nav {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    align-items: center; /* This ensures that children align in the middle */
+    height: 33px; /* Adjust this value as needed to match your desired nav bar height */
+  }
+
+  .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+
+  .dark-mode .nav {
+    background-color: #454545;
+  }
+
+  .toggle-dark-mode {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #eee;
+    border: none;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .dark-mode .toggle-dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .dark-mode .styled-table {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* Lighter shadow for dark mode */
+}
+
+.dark-mode .styled-table thead tr {
+    background-color: #666; /* Darker head background for visibility */
+    color: #e0e0e0; /* Light text color for contrast */
+}
+
+.dark-mode .styled-table th,
+.dark-mode .styled-table td {
+    border-bottom: 1px solid #888; /* Adjust the border color for better visibility */
+}
+
+.dark-mode .styled-table tbody tr {
+    background-color: #333; /* Dark background for rows */
+    color: #e0e0e0; /* Light text for readability */
+}
+
+.dark-mode .styled-table tbody tr:nth-of-type(even) {
+    background-color: #2a2a2a; /* Slightly different shade for alternate rows */
+}
+
+.dark-mode .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #666; /* Dark mode specific border */
+}
+
+  .footer {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
+
+  .footer-links a, .footer p a {
+    color: #fff; /* Ensures links are white */
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover, .footer p a:hover {
+    color: #f67280; /* Lighter color on hover */
+  }
+
+    /*Nav with Sub link */
+
+  .nav-item,
+  .dropbtn {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white; /* Ensure text color is white */
+    cursor: pointer;
+  }
+
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Dropdown button */
+  .dropbtn {
+    background-color: #454545; /* Dropdown background */
+    padding: 12px 16px;
+    border-radius: 30px; /* Rounded corners for the dropdown button */
+  }
+
+  /* Dropdown content container */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #454545; /* Match nav background */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  /* Dropdown content links */
+  .dropdown-content a {
+    color: white; /* Set text color to white for dropdown links */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Hover state for dropdown links */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1; /* Light background on hover for contrast */
+    color: #333; /* Dark text color for readability on light background */
+  }
+
+  /* Display the dropdown content when hovering over the dropdown container */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+ 
+  .text {
+    --bg-color: #f4f4f4; /* Updated background color */
+    --text-color: #333;
+   }
+  
+  .dark-mode {
+    --bg-color: #454545; /* Dark mode background */
+    --text-color: #e0e0e0; /* Dark mode text color */
+  }
+  
+  .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #454545;
+    color: #ffffff;
+    text-align: left;
+    border-radius: 30px;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #454545;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #454545;
+}
+
+
+</style>
+</head>
+<body>
+
+<header class="header" style="display: flex; justify-content: space-between; align-items: center; background-color: #f4f4f4; padding: 12px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 30px;">
+    <div class="logo-container" style="display: flex; align-items: center;">
+        
+        <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+            <img src="logo3.png" alt="Cooking Logo" width="32" height="43">
+            <div class="logo-text" style="margin-left: 10px; font-size: 1.5rem; font-weight: bold; color: #FFF; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-style: italic;">Cooking With Claudio</div>
+        </a>
+    </div>
+    <div class="search-container" style="position: relative;">
+        <input type="text" class="search-bar" placeholder="Search..." style="font-size: 1rem; padding: 5px;">
+        <button onclick="search()" style="cursor: pointer; padding: 5px 10px; margin-left: 5px;">Go</button>
+    </div>
+</header>
+
+<div class="breadcrumb" style="background-color: #454545; border-radius: 20px; display: inline-block; padding: 5px 15px; font-size: 0.9em; color: white;">
+  <a href="index.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Home</a>
+  <span style="color: #D1D9E0;"> &gt; </span>
+  <a href="Foodblog.html" style="color: #D1D9E0; text-decoration: none; font-weight: bold;">Food Blog</a>
+  <span style="color: #D1D9E0;"> &gt; </span>
+</div>
+
+<div>
+  <button class="toggle-dark-mode" onclick="toggleDarkMode()" style="padding: 10px 20px; background-color: #D1D9E0; border: none; font-size: 16px; border-radius: 20px;">Dark Mode ⚫</button>
+<div>
+
+  
+  <nav class="nav">
+    <a href="index.html" class="nav-item">Home</a>
+    <div class="nav-item dropdown">
+        <a href="#" class="dropbtn">Food Categories</a>
+        <div class="dropdown-content">
+            <a href="antipasto.html">Antipasto</a>
+            <a href="Primo.html">Primo</a>
+            <a href="secondo.html">Secondo</a>
+        </div>
+    </div>
+    <a href="Foodblog.html" class="nav-item">Food Blog</a>
+    <a href="Api.html" class="nav-item">Meal Plan</a>
+    <a href="other.html" class="nav-item">Other</a>
+</nav>
+
+<div class="blog-container" style="padding: 20px;">
+    <h1>Food Blog</h1>
+    <p>Share your favorite culinary experiences, recipes, and food photos with our community.</p>
+    <form id="blogForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" placeholder="Your comment" required></textarea>
+        
+        <label for="photo">Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+        
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="blog-container" style="padding: 20px;">
+    <h1>Comment Section</Section></h1>
+    <p>See what our community has shared:</p>
+    
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Comment</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Wojciech Szczęsny</td>
+                <td>Best pizza I've ever had!</td>
+                <td><img src="pizza.png" alt="Pizza" style="width: 100px; height: auto;"></td>
+            </tr>
+            <tr>
+                <td>Kenan Yildiz</td>
+                <td>My favorite pasta!</td>
+                <td><img src="pasta.png" alt="Pizza" style="width: 100px; height: auto;"></td>
+            </tr>
+            <tr>
+                <td>Federico Chiesa</td>
+                <td>Today I made Mussels !</td>
+                <td><img src="mussels.png" alt="Pizza" style="width: 100px; height: auto;"></td>
+            </tr>
+            <tr>
+                <td>Dušan Vlahović</td>
+                <td>I love Italian cheese!</td>
+                <td><img src="cheese.png" alt="Pizza" style="width: 100px; height: auto;"></td>
+            </tr>
+            <tr>
+                <td>Moise Kean</td>
+                <td>I love Amatriciana!</td>
+                <td><img src="amatriciana.png" alt="Pizza" style="width: 100px; height: auto;"></td>
+            </tr>
+            <!-- More rows as needed -->
+        </tbody>
+    </table>
+</div>
+
+
+<footer class="footer">
+    <div class="footer-links">
+    </div>
+    <p>&copy; 2024 Cooking With Claudio. | <a href="Aboutus.html" target="_blank">About Us</a> | <a href="Contactus.html" target="_blank">Contact Us</a> |
+</footer>
+
+<script>
+
+  const pages = [
+  { title: "Home", url: "index.html" },
+  { title: "Antipasto", url: "Antipasto.html" },
+  { title: "Primo", url: "Primo.html" },
+  { title: "Secondo", url: "Secondo.html" },
+  { title: "Meal Plan", url: "Api.html" },
+  { title: "Food Blog", url: "Foodblog.html" }, // Adjust the URL as needed
+  { title: "Other", url: "other.html" },
+  { title: "About us", url: "Aboutus.html" },
+  { title: "Contact us", url: "Contactus.html" },
+  { title: "Special of the Day", url: "Special.html" },
+  { title: "Dessert", url: "Dessert.html" },
+  { title: "Aperitivo", url: "Aperitivo.html" },
+  { title: "Fish Recipes", url: "Fish.html" }
+  
+];
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      // Update the button text based on the current theme
+      const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+      document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+    }
+  
+    function search() {
+      var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+      const page = pages.find(p => p.title.toLowerCase().includes(query));
+      if (page) {
+        window.location.href = page.url; // Redirect to the found page
+      } else {
+        alert('No match found');
+      }
+    }
+  </script>
+  <script>
+    document.getElementById("blogForm").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+        alert('Thank you for your submission!');      
+    });
+</script>
+</body>
+</html>
+
