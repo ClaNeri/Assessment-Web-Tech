@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cooking With Claudio</title>
 <style>
+  /*Logo code*/
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -13,7 +14,7 @@
     color: #333;
     transition: background-color 0.3s, color 0.3s;
   }
-
+  
   .logo-container {
     display: flex;
     align-items: center;
@@ -22,7 +23,7 @@
     border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-
+  
   .logo-text {
     color: #FFF; 
     font-size: 1.5rem; 
@@ -32,12 +33,7 @@
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
     font-style: italic; 
   }
-
-  .dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-  }
-
+    
   .header {
     padding: 12px 20px;
     border-radius: 30px;
@@ -50,6 +46,7 @@
     transition: background-color 0.3s;
   }
 
+  /*Search bar code*/
   .search-container {
     position: relative;
   }
@@ -59,6 +56,8 @@
     font-size: 16px;
   }
 
+
+  /* Navigator code*/
   .nav {
     padding: 12px 20px;
     border-radius: 30px;
@@ -69,8 +68,8 @@
     display: flex;
     justify-content: center;
     display: flex;
-    align-items: center; /* This ensures that children align in the middle */
-    height: 33px; /* Adjust this value as needed to match your desired nav bar height */
+    align-items: center; 
+    height: 33px; 
   }
 
   .nav-item {
@@ -82,6 +81,8 @@
   .nav-item:hover {
     text-decoration: underline;
   }
+
+  /*Dark Mode*/
 
   .dark-mode .nav {
     background-color: #454545;
@@ -99,33 +100,24 @@
   .dark-mode {
     background-color: #121212;
     color: #e0e0e0;
-}
+  }
 
-.dark-mode .header,
-.dark-mode .footer,
-.dark-mode .nav,
-.dark-mode .breadcrumb,
-.dark-mode .column,
-.dark-mode .toggle-dark-mode {
-    background-color: #454545; /* Darker shade for dark mode */
-    color: #e0e0e0; /* Lighter text for better readability */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
-}
 
-.dark-mode .nav-item,
-.dark-mode .footer-links a,
-.dark-mode .breadcrumb a {
-    color: #e0e0e0;
-}
+  .dark-mode .column,
+  .dark-mode .toggle-dark-mode {
+    background-color: #454545; 
+    color: #e0e0e0; 
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); 
+  }
 
 .dark-mode .nav-item:hover,
-.dark-mode .footer-links a:hover,
-.dark-mode .breadcrumb a:hover {
-    color: #78dfd0; /* A lighter color for hover effects */
+.dark-mode .footer-links a:hover {
+    color: #78dfd0; 
     text-decoration: underline;
 }
 
  
+  /*Footer code*/
   .footer {
     padding: 12px 20px;
     border-radius: 30px;
@@ -140,66 +132,61 @@
   }
 
   .footer-links a, .footer p a {
-    color: #fff; /* Ensures links are white */
+    color: #fff; 
     text-decoration: none;
     transition: color 0.3s;
   }
 
   .footer-links a:hover, .footer p a:hover {
-    color: #f67280; /* Lighter color on hover */
+    color: #f67280; 
   }
-  /*Nav with Sub link */
+  
+  /*Navigator bar with Sub link */
 
   .nav-item,
   .dropbtn {
     margin: 0 10px;
     text-decoration: none;
-    color: white; /* Ensure text color is white */
+    color: white; 
     cursor: pointer;
   }
 
-  /* Dropdown container */
   .dropdown {
     position: relative;
     display: inline-block;
   }
 
-  /* Dropdown button */
   .dropbtn {
-    background-color: #454545; /* Dropdown background */
+    background-color: #454545; 
     padding: 12px 16px;
-    border-radius: 30px; /* Rounded corners for the dropdown button */
+    border-radius: 30px; 
   }
 
-  /* Dropdown content container */
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #454545; /* Match nav background */
+    background-color: #454545; 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
 
-  /* Dropdown content links */
   .dropdown-content a {
-    color: white; /* Set text color to white for dropdown links */
+    color: white; 
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
 
-  /* Hover state for dropdown links */
   .dropdown-content a:hover {
-    background-color: #f1f1f1; /* Light background on hover for contrast */
-    color: #333; /* Dark text color for readability on light background */
+    background-color: #f1f1f1; 
+    color: #333; 
   }
 
-  /* Display the dropdown content when hovering over the dropdown container */
   .dropdown:hover .dropdown-content {
     display: block;
   }
-      
+      /*Meal Plan*/
       #mealPlan {
         display: flex;
         justify-content: center;
@@ -226,7 +213,7 @@
         height: auto;
         border-radius: 8px;
     }
-
+    /*FeachMealPlan*/
     #fetchMealPlan {
         background-color: #0077cc;
         color: white;
@@ -242,28 +229,29 @@
         background-color: #005fa3;
     }
 
+    /*Description Container*/
     .description-container {
       text-align: center;
       padding: 30px;
-      background-color: #fff; /* Adjust the background color as needed */
+      background-color: #fff; 
       margin: 30px auto;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       border-radius: 8px;
       width: 80%;
-      max-width: 800px; /* Maximum width of the description container */
+      max-width: 800px; 
     }
 
     .description-title {
-      font-size: 2rem; /* Title size */
-      color: #333; /* Title color */
+      font-size: 2rem; 
+      color: #333; 
       margin-bottom: 10px;
       font-weight: bold;
     }
 
     .description {
-      font-size: 1rem; /* Description text size */
-      color: #333; /* Description text color */
-      line-height: 1.6; /* Line height for better readability */
+      font-size: 1rem; 
+      color: #333; 
+      line-height: 1.6; 
     }
     </style>
   </head>
@@ -335,7 +323,7 @@
     });
 
     function fetchMealPlan(calories) {
-        const apiKey = '9f6b0aa5042b489591f4c3490e0f0397'; // Replace with your actual Spoonacular API key
+        const apiKey = '9f6b0aa5042b489591f4c3490e0f0397'; 
         const url = `https://api.spoonacular.com/mealplanner/generate?targetCalories=${calories}&timeFrame=day&apiKey=${apiKey}`;
 
         fetch(url)
@@ -356,7 +344,7 @@
     function displayMealPlan(data) {
         let content = '';
         data.meals.forEach(meal => {
-            const recipeUrl = `https://spoonacular.com/recipes/${meal.title}-${meal.id}`; // Ensure the URL format is correct as per API documentation
+            const recipeUrl = `https://spoonacular.com/recipes/${meal.title}-${meal.id}`; 
             
             content += `<div class="meal">
                             <h3><a href="${recipeUrl}" target="_blank">${meal.title}</a></h3>
@@ -369,13 +357,14 @@
 </script>
   
   <script>
+    // Search bar JavaScript
     const pages = [
       { title: "Home", url: "index.html" },
       { title: "Antipasto", url: "Antipasto.html" },
       { title: "Primo", url: "Primo.html" },
       { title: "Secondo", url: "Secondo.html" },
       { title: "Meal Plan", url: "Api.html" },
-      { title: "Food Blog", url: "Foodblog.html" }, // Adjust the URL as needed
+      { title: "Food Blog", url: "Foodblog.html" }, 
       { title: "Other", url: "other.html" },
       { title: "About us", url: "Aboutus.html" },
       { title: "Contact us", url: "Contactus.html" },
@@ -385,18 +374,18 @@
       { title: "Fish Recipes", url: "Fish.html" }
       
     ];
+    // togglerDarkMode
   function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
-    // Update the button text based on the current theme
     const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
     document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
   }
-  
+  // Searcher query JavaScript
   function search() {
     var query = document.querySelector('.search-bar').value.toLowerCase().trim();
     const page = pages.find(p => p.title.toLowerCase().includes(query));
     if (page) {
-      window.location.href = page.url; // Redirect to the found page
+      window.location.href = page.url;
     } else {
       alert('No match found');
     }

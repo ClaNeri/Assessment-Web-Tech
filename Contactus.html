@@ -46,8 +46,7 @@
     transition: background-color 0.3s;
   }
 
-
-  
+ 
    /*Dark mode*/
    .dark-mode {
     background-color: #121212;
@@ -81,8 +80,14 @@
     --bg-color: #454545; 
     --text-color: #e0e0e0; 
   }
+
+  .dark-mode .nav-item:hover,
+  .dark-mode .footer-links a:hover{
+    color: #78dfd0; 
+    text-decoration: underline;
+  } 
    
-    /*Search bar code*/
+    /* Search bar code */
   .search-container {
     position: relative;
   }
@@ -92,7 +97,7 @@
     font-size: 16px;
   }
 
-   /* Navigator code*/
+   /* Navigator code */
   .nav {
     padding: 12px 20px;
     border-radius: 30px;
@@ -117,7 +122,7 @@
     text-decoration: underline;
   }
 
-  /*Footer code*/
+  /* Footer code */
   .footer {
     padding: 12px 20px;
     border-radius: 30px;
@@ -132,17 +137,16 @@
   }
 
   .footer-links a, .footer p a {
-    color: #fff; /* Ensures links are white */
+    color: #fff; 
     text-decoration: none;
     transition: color 0.3s;
   }
 
   .footer-links a:hover, .footer p a:hover {
-    color: #f67280; /* Lighter color on hover */
+    color: #f67280; 
   }
 
-/*Navigator bar with Sub link */
-
+  /* Navigator bar with Sub link */
   .nav-item,
   .dropbtn {
     margin: 0 10px;
@@ -221,24 +225,24 @@
 
   /*Dark mode for comment table*/
   .dark-mode .form-container {
-    background-color: #333; /* Dark background for the form */
-    color: #e0e0e0; /* Light text color for readability */
+    background-color: #333; 
+    color: #e0e0e0; 
   }
   
   .dark-mode input,
   .dark-mode textarea {
-    background-color: #555; /* Darker background for input fields */
-    color: #e0e0e0; /* Light text color for input fields */
-    border: 1px solid #777; /* Adjusted border color for contrast */
+    background-color: #555; 
+    color: #e0e0e0; 
+    border: 1px solid #777; 
   }
   
   .dark-mode input[type="submit"] {
-    background-color: #28a745; /* A green that looks good on dark backgrounds */
-    color: #e0e0e0; /* White text color for the submit button */
+    background-color: #28a745; 
+    color: #e0e0e0; 
   }
   
   .dark-mode input[type="submit"]:hover {
-    background-color: #218838; /* A slightly darker green for the hover state */
+    background-color: #218838; 
   }
 </style>
 </head>
@@ -303,8 +307,6 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-    
-
 
 <footer class="footer">
     <div class="footer-links">
@@ -312,47 +314,45 @@
     <p>&copy; 2024 Cooking With Claudio. | <a href="Aboutus.html" target="_blank">About Us</a> | <a href="Contactus.html" target="_blank">Contact Us</a> |
 </footer>
     
-
 <script>
-  //url for search bar
+  // Search bar JavaScript
   const pages = [
-  { title: "Home", url: "index.html" },
-  { title: "Antipasto", url: "Antipasto.html" },
-  { title: "Primo", url: "Primo.html" },
-  { title: "Secondo", url: "Secondo.html" },
-  { title: "Meal Plan", url: "Api.html" },
-  { title: "Food Blog", url: "Foodblog.html" }, 
-  { title: "Other", url: "other.html" },
-  { title: "About us", url: "Aboutus.html" },
-  { title: "Contact us", url: "Contactus.html" },
-  { title: "Special of the Day", url: "Special.html" },
-  { title: "Dessert", url: "Dessert.html" },
-  { title: "Aperitivo", url: "Aperitivo.html" },
-  { title: "Fish Recipes", url: "Fish.html" }
-  
-];
-    // dark mode JavaScript
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
-      document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
-    }
+    { title: "Home", url: "index.html" },
+    { title: "Antipasto", url: "Antipasto.html" },
+    { title: "Primo", url: "Primo.html" },
+    { title: "Secondo", url: "Secondo.html" },
+    { title: "Meal Plan", url: "Api.html" },
+    { title: "Food Blog", url: "Foodblog.html" }, 
+    { title: "Other", url: "other.html" },
+    { title: "About us", url: "Aboutus.html" },
+    { title: "Contact us", url: "Contactus.html" },
+    { title: "Special of the Day", url: "Special.html" },
+    { title: "Dessert", url: "Dessert.html" },
+    { title: "Aperitivo", url: "Aperitivo.html" },
+    { title: "Fish Recipes", url: "Fish.html" }
     
-    // search bar navigator
-    function search() {
-      var query = document.querySelector('.search-bar').value.toLowerCase().trim();
-      const page = pages.find(p => p.title.toLowerCase().includes(query));
-      if (page) {
-        window.location.href = page.url;
-      } else {
-        alert('No match found');
-      }
+  ];
+  // togglerDarkMode JS
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+    document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+  }
+  // Searcher query JavaScript
+  function search() {
+    var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+    const page = pages.find(p => p.title.toLowerCase().includes(query));
+    if (page) {
+      window.location.href = page.url; 
+    } else {
+      alert('No match found');
     }
-  </script>
+  }
+</script>
   <script>
-    //allert in JavaScript
+    //alert in JavaScript
     document.getElementById("contactForm").addEventListener("submit", function(event){
-        event.preventDefault(); // Prevent actual form submission
+        event.preventDefault();
         alert('Thank you for your submission!');   
     });
 </script>

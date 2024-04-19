@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cooking With Claudio</title>
 <style>
+  /*Logo code*/
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -24,20 +25,15 @@
   }
 
   .logo-text {
-    color: #FFF; /* Ensures high contrast and visibility against darker backgrounds. */
-    font-size: 1.5rem; /* Uses rem for scalable and responsive design, ensuring better accessibility. */
-    font-weight: bold; /* Highlights the text with boldness for emphasis. */
-    letter-spacing: 0.05em; /* Enhances readability by spacing out letters slightly. */
-    margin-left: 1rem; /* Provides spatial separation from elements, using rem for consistency in scaling. */
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Enhanced shadow for greater depth and legibility. */
-    font-style: italic; /* Applies an italic style to give the text a stylized appearance. */
+    color: #FFF; 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    letter-spacing: 0.05em; 
+    margin-left: 1rem; 
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
+    font-style: italic; 
   }
-
-  .dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-  }
-
+  
   .header {
     padding: 12px 20px;
     border-radius: 30px;
@@ -50,37 +46,19 @@
     transition: background-color 0.3s;
   }
 
+  /*Search bar code*/ 
   .search-container {
     position: relative;
   }
-
+    
   .search-bar {
     padding: 5px;
     font-size: 16px;
   }
-
-  .nav {
-    padding: 12px 20px;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #454545;
-    color: white;
-    padding: 5px 0;
-    display: flex;
-    justify-content: center;
-    display: flex;
-    align-items: center; /* This ensures that children align in the middle */
-    height: 33px; /* Adjust this value as needed to match your desired nav bar height */
-  }
-
-  .nav-item {
-    margin: 0 10px;
-    text-decoration: none;
-    color: white;
-  }
-
-  .nav-item:hover {
-    text-decoration: underline;
+  /* Dark Mode */
+  .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
   }
 
   .dark-mode .nav {
@@ -102,32 +80,69 @@
   }
 
   .dark-mode .styled-table {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* Lighter shadow for dark mode */
-}
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); 
+  }
 
-.dark-mode .styled-table thead tr {
-    background-color: #666; /* Darker head background for visibility */
-    color: #e0e0e0; /* Light text color for contrast */
-}
+  .dark-mode .styled-table thead tr {
+    background-color: #666;
+    color: #e0e0e0; 
+  }
 
-.dark-mode .styled-table th,
-.dark-mode .styled-table td {
-    border-bottom: 1px solid #888; /* Adjust the border color for better visibility */
-}
+  .dark-mode .styled-table th,
+  .dark-mode .styled-table td {
+    border-bottom: 1px solid #888; 
+  }
 
-.dark-mode .styled-table tbody tr {
-    background-color: #333; /* Dark background for rows */
-    color: #e0e0e0; /* Light text for readability */
-}
+  .dark-mode .styled-table tbody tr {
+    background-color: #333; 
+    color: #e0e0e0; 
+  }
 
-.dark-mode .styled-table tbody tr:nth-of-type(even) {
-    background-color: #2a2a2a; /* Slightly different shade for alternate rows */
-}
+  .dark-mode .styled-table tbody tr:nth-of-type(even) {
+    background-color: #2a2a2a; 
+  }
 
-.dark-mode .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #666; /* Dark mode specific border */
-}
+  .dark-mode .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #666; 
+  }
 
+  .text {
+    --bg-color: #f4f4f4; 
+    --text-color: #333;
+   }
+  
+  .dark-mode {
+    --bg-color: #454545; 
+    --text-color: #e0e0e0; 
+  }
+
+
+  /* Navigator code*/
+  .nav {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    align-items: center; 
+    height: 33px; 
+  }
+
+  .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+
+  /*Footer code*/
   .footer {
     padding: 12px 20px;
     border-radius: 30px;
@@ -142,78 +157,63 @@
   }
 
   .footer-links a, .footer p a {
-    color: #fff; /* Ensures links are white */
+    color: #fff; 
     text-decoration: none;
     transition: color 0.3s;
   }
 
   .footer-links a:hover, .footer p a:hover {
-    color: #f67280; /* Lighter color on hover */
+    color: #f67280; 
   }
+  
 
-    /*Nav with Sub link */
+  /*Navigator bar with Sub link */
 
   .nav-item,
   .dropbtn {
     margin: 0 10px;
     text-decoration: none;
-    color: white; /* Ensure text color is white */
+    color: white; 
     cursor: pointer;
   }
 
-  /* Dropdown container */
   .dropdown {
     position: relative;
     display: inline-block;
   }
 
-  /* Dropdown button */
   .dropbtn {
-    background-color: #454545; /* Dropdown background */
+    background-color: #454545; 
     padding: 12px 16px;
-    border-radius: 30px; /* Rounded corners for the dropdown button */
+    border-radius: 30px; 
   }
 
-  /* Dropdown content container */
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #454545; /* Match nav background */
+    background-color: #454545; 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
 
-  /* Dropdown content links */
   .dropdown-content a {
-    color: white; /* Set text color to white for dropdown links */
+    color: white; 
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
 
-  /* Hover state for dropdown links */
   .dropdown-content a:hover {
-    background-color: #f1f1f1; /* Light background on hover for contrast */
-    color: #333; /* Dark text color for readability on light background */
+    background-color: #f1f1f1; 
+    color: #333; 
   }
 
-  /* Display the dropdown content when hovering over the dropdown container */
   .dropdown:hover .dropdown-content {
     display: block;
   }
 
- 
-  .text {
-    --bg-color: #f4f4f4; /* Updated background color */
-    --text-color: #333;
-   }
-  
-  .dark-mode {
-    --bg-color: #454545; /* Dark mode background */
-    --text-color: #e0e0e0; /* Dark mode text color */
-  }
-  
+  /* Table Blog */
   .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -221,37 +221,36 @@
     min-width: 400px;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
+  }
 
-.styled-table thead tr {
+  .styled-table thead tr {
     background-color: #454545;
     color: #ffffff;
     text-align: left;
     border-radius: 30px;
-}
+  }
 
-.styled-table th,
-.styled-table td {
+  .styled-table th,
+  .styled-table td {
     padding: 12px 15px;
-}
+  }
 
-.styled-table tbody tr {
+  .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
-}
+  }
 
-.styled-table tbody tr:nth-of-type(even) {
+  .styled-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
-}
+  }
 
-.styled-table tbody tr:last-of-type {
+  .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #454545;
-}
+  }
 
-.styled-table tbody tr.active-row {
+  .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #454545;
-}
-
+  }
 
 </style>
 </head>
@@ -353,7 +352,7 @@
                 <td>I love Amatriciana!</td>
                 <td><img src="amatriciana.png" alt="Pizza" style="width: 100px; height: auto;"></td>
             </tr>
-            <!-- More rows as needed -->
+            
         </tbody>
     </table>
 </div>
@@ -366,41 +365,43 @@
 </footer>
 
 <script>
-
+  // Search bar JavaScript
   const pages = [
-  { title: "Home", url: "index.html" },
-  { title: "Antipasto", url: "Antipasto.html" },
-  { title: "Primo", url: "Primo.html" },
-  { title: "Secondo", url: "Secondo.html" },
-  { title: "Meal Plan", url: "Api.html" },
-  { title: "Food Blog", url: "Foodblog.html" }, // Adjust the URL as needed
-  { title: "Other", url: "other.html" },
-  { title: "About us", url: "Aboutus.html" },
-  { title: "Contact us", url: "Contactus.html" },
-  { title: "Special of the Day", url: "Special.html" },
-  { title: "Dessert", url: "Dessert.html" },
-  { title: "Aperitivo", url: "Aperitivo.html" },
-  { title: "Fish Recipes", url: "Fish.html" }
-  
-];
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      // Update the button text based on the current theme
-      const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
-      document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+    { title: "Home", url: "index.html" },
+    { title: "Antipasto", url: "Antipasto.html" },
+    { title: "Primo", url: "Primo.html" },
+    { title: "Secondo", url: "Secondo.html" },
+    { title: "Meal Plan", url: "Api.html" },
+    { title: "Food Blog", url: "Foodblog.html" }, 
+    { title: "Other", url: "other.html" },
+    { title: "About us", url: "Aboutus.html" },
+    { title: "Contact us", url: "Contactus.html" },
+    { title: "Special of the Day", url: "Special.html" },
+    { title: "Dessert", url: "Dessert.html" },
+    { title: "Aperitivo", url: "Aperitivo.html" },
+    { title: "Fish Recipes", url: "Fish.html" }
+    
+  ];
+  // togglerDarkMode JS
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+    document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+  }
+  // Searcher query JavaScript
+  function search() {
+    var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+    const page = pages.find(p => p.title.toLowerCase().includes(query));
+    if (page) {
+      window.location.href = page.url; 
+    } else {
+      alert('No match found');
     }
-  
-    function search() {
-      var query = document.querySelector('.search-bar').value.toLowerCase().trim();
-      const page = pages.find(p => p.title.toLowerCase().includes(query));
-      if (page) {
-        window.location.href = page.url; // Redirect to the found page
-      } else {
-        alert('No match found');
-      }
-    }
-  </script>
-  <script>
+  }
+</script>
+
+<script>
+    // mock alert submition 
     document.getElementById("blogForm").addEventListener("submit", function(event) {
         event.preventDefault(); 
         alert('Thank you for your submission!');      

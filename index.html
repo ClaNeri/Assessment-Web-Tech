@@ -91,6 +91,11 @@
     font-size: 16px;
   }
 
+  .dark-mode .nav-item:hover,
+  .dark-mode .footer-links a:hover {
+    color: #78dfd0; 
+    text-decoration: underline;
+}
    /* Navigator code*/
   .nav {
     padding: 12px 20px;
@@ -187,7 +192,7 @@
   .dropbtn {
     margin: 0 10px;
     text-decoration: none;
-    color: white; /* Ensure text color is white */
+    color: white; 
     cursor: pointer;
   }
 
@@ -197,22 +202,22 @@
   }
 
   .dropbtn {
-    background-color: #454545; /* Dropdown background */
+    background-color: #454545; 
     padding: 12px 16px;
-    border-radius: 30px; /* Rounded corners for the dropdown button */
+    border-radius: 30px; 
   }
 
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #454545; /* Match nav background */
+    background-color: #454545; 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
 
   .dropdown-content a {
-    color: white; /* Set text color to white for dropdown links */
+    color: white; 
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -298,7 +303,7 @@
 </div>
 
 <div id="videoContainer">
-  <!-- The iframe will be inserted here by the JavaScript -->
+
 </div>
 
 <footer class="footer">
@@ -325,7 +330,7 @@
       { title: "Fish Recipes", url: "Fish.html" }
       
     ];
-    // togglerDarkMode
+    // togglerDarkMode JS
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
       const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
@@ -344,6 +349,7 @@
   </script>
   
   <script>
+    //Youtube video code JS
     document.addEventListener('DOMContentLoaded', function() {
         var videoId = 'DkXOAjro1_Q';
         var iframe = document.createElement('iframe');

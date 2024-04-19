@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cooking With Claudio</title>
 <style>
+  /*Logo code*/
   body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -32,12 +33,7 @@
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
     font-style: italic; 
   }
-
-  .dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-  }
-
+  
   .header {
     padding: 12px 20px;
     border-radius: 30px;
@@ -50,37 +46,20 @@
     transition: background-color 0.3s;
   }
 
+  /*Search bar code*/ 
   .search-container {
     position: relative;
   }
-
+    
   .search-bar {
     padding: 5px;
     font-size: 16px;
   }
 
-  .nav {
-    padding: 12px 20px;
-    border-radius: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #454545;
-    color: white;
-    padding: 5px 0;
-    display: flex;
-    justify-content: center;
-    display: flex;
-    align-items: center; /* This ensures that children align in the middle */
-    height: 33px; /* Adjust this value as needed to match your desired nav bar height */
-  }
-
-  .nav-item {
-    margin: 0 10px;
-    text-decoration: none;
-    color: white;
-  }
-
-  .nav-item:hover {
-    text-decoration: underline;
+  /*Dark Mode*/
+  .dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
   }
 
   .dark-mode .nav {
@@ -101,6 +80,48 @@
     color: #fff;
   }
 
+  .dark-mode .nav-item:hover,
+  .dark-mode .footer-links a:hover{
+    color: #78dfd0; 
+    text-decoration: underline;
+  }
+  
+  .text {
+    --bg-color: #f4f4f4; 
+    --text-color: #333;
+   }
+  
+  .dark-mode {
+    --bg-color: #454545; 
+    --text-color: #e0e0e0;
+  }
+
+  /* Navigator code*/
+  .nav {
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #454545;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    align-items: center; 
+    height: 33px; 
+  }
+
+  .nav-item {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer code */
   .footer {
     padding: 12px 20px;
     border-radius: 30px;
@@ -115,119 +136,60 @@
   }
 
   .footer-links a, .footer p a {
-    color: #fff; /* Ensures links are white */
+    color: #fff; 
     text-decoration: none;
     transition: color 0.3s;
   }
 
   .footer-links a:hover, .footer p a:hover {
-    color: #f67280; /* Lighter color on hover */
+    color: #f67280; 
   }
 
-  .recipe-section {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px;
-  }
-
-  .recipe-card {
-    flex: 1 1 calc(25% - 40px);
-    margin: 10px;
-    height: 200px;
-    position: relative;
-    background: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .recipe-card img {
-    max-width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-  }
-  
-  .recipe-card:hover img {
-    transform: scale(1.1);
-  }
-  
-  .recipe-card h3 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin: 0;
-  }
-
-  /*Nav with Sub link */
-
+   /* Navigator bar with Sub link */
   .nav-item,
   .dropbtn {
     margin: 0 10px;
     text-decoration: none;
-    color: white; /* Ensure text color is white */
+    color: white; 
     cursor: pointer;
   }
 
-  /* Dropdown container */
   .dropdown {
     position: relative;
     display: inline-block;
   }
 
-  /* Dropdown button */
   .dropbtn {
-    background-color: #454545; /* Dropdown background */
+    background-color: #454545; 
     padding: 12px 16px;
-    border-radius: 30px; /* Rounded corners for the dropdown button */
+    border-radius: 30px; 
   }
 
-  /* Dropdown content container */
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #454545; /* Match nav background */
+    background-color: #454545; 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
 
-  /* Dropdown content links */
   .dropdown-content a {
-    color: white; /* Set text color to white for dropdown links */
+    color: white; 
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
 
-  /* Hover state for dropdown links */
   .dropdown-content a:hover {
-    background-color: #f1f1f1; /* Light background on hover for contrast */
-    color: #333; /* Dark text color for readability on light background */
+    background-color: #f1f1f1; 
+    color: #333; 
   }
 
-  /* Display the dropdown content when hovering over the dropdown container */
   .dropdown:hover .dropdown-content {
     display: block;
   }
-
-
   
-  .text {
-    --bg-color: #f4f4f4; /* Updated background color */
-    --text-color: #333;
-   }
-  
-  .dark-mode {
-    --bg-color: #454545; /* Dark mode background */
-    --text-color: #e0e0e0; /* Dark mode text color */
-  }
 </style>
 </head>
 <body>
@@ -275,7 +237,6 @@
 
 <div class="about-site" style="padding: 20px; text-align: center; background-color: var(--bg-color); color: var(--text-color); margin: 20px auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
     <h2 style="margin-bottom: 0.5em;">About Cooking With Claudio</h2>
-    <!-- Insert your 'About Us' content here -->
     <p style="font-size: 1.1em; line-height: 1.6;">Cooking With Claudio is a celebration of Italian and Sicilian cuisine, born from a profound passion for the rich culinary traditions of Italy’s sun-drenched shores. Our founder, Claudio, hails from a long lineage of Sicilian cooks, and his earliest memories are steeped in the aromas and flavors of his mother's kitchen where tomatoes, basil, and olive oil were the cornerstone of every meal. His culinary journey began in the rustic kitchens of Sicily, where food is not just sustenance, but the heart of culture and community.</p>
     <p style="font-size: 1.1em; line-height: 1.6;">At Cooking With Claudio, we pay homage to the timeless recipes passed down through generations, while infusing them with modern twists that honor today’s palates. We believe that good food brings people together, telling stories of history, tradition, and the simple joy of a meal shared. Our mission is to transport our guests to the bustling streets of Palermo, the serene landscapes of Tuscany, and the vibrant markets of Naples through each meticulously crafted dish.</p>
     <p style="font-size: 1.1em; line-height: 1.6;">Claudio's passion extends beyond the food itself to the rich, communal experience of Italian dining. He champions the use of fresh, locally-sourced ingredients that embody the Italian philosophy of "la semplicità è l’ultima sofisticazione" (simplicity is the ultimate sophistication). Every plate that leaves our kitchen is a brushstroke of Claudio’s culinary art, painting a picture of a land where food is revered, savored, and above all, a festivity of love.</p>
@@ -290,39 +251,39 @@
 </footer>
 
 <script>
-
+  // Search bar JavaScript
   const pages = [
-  { title: "Home", url: "index.html" },
-  { title: "Antipasto", url: "Antipasto.html" },
-  { title: "Primo", url: "Primo.html" },
-  { title: "Secondo", url: "Secondo.html" },
-  { title: "Meal Plan", url: "Api.html" },
-  { title: "Food Blog", url: "Foodblog.html" }, // Adjust the URL as needed
-  { title: "Other", url: "other.html" },
-  { title: "About us", url: "Aboutus.html" },
-  { title: "Contact us", url: "Contactus.html" },
-  { title: "Special of the Day", url: "Special.html" },
-  { title: "Dessert", url: "Dessert.html" },
-  { title: "Aperitivo", url: "Aperitivo.html" },
-  { title: "Fish Recipes", url: "Fish.html" }
-  
-];
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      // Update the button text based on the current theme
-      const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
-      document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+    { title: "Home", url: "index.html" },
+    { title: "Antipasto", url: "Antipasto.html" },
+    { title: "Primo", url: "Primo.html" },
+    { title: "Secondo", url: "Secondo.html" },
+    { title: "Meal Plan", url: "Api.html" },
+    { title: "Food Blog", url: "Foodblog.html" }, 
+    { title: "Other", url: "other.html" },
+    { title: "About us", url: "Aboutus.html" },
+    { title: "Contact us", url: "Contactus.html" },
+    { title: "Special of the Day", url: "Special.html" },
+    { title: "Dessert", url: "Dessert.html" },
+    { title: "Aperitivo", url: "Aperitivo.html" },
+    { title: "Fish Recipes", url: "Fish.html" }
+    
+  ];
+  // togglerDarkMode JS
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const toggleButtonText = document.body.classList.contains('dark-mode') ? 'Light Mode 🟢' : 'Dark Mode ⚫';
+    document.querySelector('.toggle-dark-mode').textContent = toggleButtonText;
+  }
+  // Searcher query JavaScript
+  function search() {
+    var query = document.querySelector('.search-bar').value.toLowerCase().trim();
+    const page = pages.find(p => p.title.toLowerCase().includes(query));
+    if (page) {
+      window.location.href = page.url; 
+    } else {
+      alert('No match found');
     }
-  
-    function search() {
-      var query = document.querySelector('.search-bar').value.toLowerCase().trim();
-      const page = pages.find(p => p.title.toLowerCase().includes(query));
-      if (page) {
-        window.location.href = page.url; // Redirect to the found page
-      } else {
-        alert('No match found');
-      }
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
