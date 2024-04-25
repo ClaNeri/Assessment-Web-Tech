@@ -320,15 +320,17 @@
   <script>
     //fetchMealPlan API using Spoonacular
     document.getElementById('fetchMealPlan').addEventListener('click', () => {
+        //retive the value from input element with the calories
         const calories = document.getElementById('calories').value;
         fetch(`https://api.spoonacular.com/mealplanner/generate?targetCalories=${calories}&timeFrame=day&apiKey=9f6b0aa5042b489591f4c3490e0f0397`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
+                    throw new Error('Network error ' + response.statusText);
                 }
                 return response.json();
             })
             .then(data => {
+                //Dived the meal each block
                 const content = data.meals.map(meal => `
                     <div class="meal">
                         <h3><a href="https://spoonacular.com/recipes/${meal.title}-${meal.id}" target="_blank">${meal.title}</a></h3>
@@ -337,6 +339,7 @@
                 `).join('');
                 document.getElementById('mealPlan').innerHTML = content;
             })
+            //handeling error during the fetch operation
             .catch(error => console.error('There was a problem with the fetch operation:', error));
     });
     </script>

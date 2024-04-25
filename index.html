@@ -352,7 +352,9 @@
   <script>
     //Youtube video code JS
     document.addEventListener('DOMContentLoaded', function() {
+        // Video ID youtube
         var videoId = 'DkXOAjro1_Q';
+        // Iframe element
         var iframe = document.createElement('iframe');
         iframe.setAttribute('width', '560'); 
         iframe.setAttribute('height', '315'); 
@@ -360,6 +362,7 @@
         iframe.setAttribute('frameborder', '0');
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
         iframe.setAttribute('allowfullscreen', true);
+        // append the iframe to the container element
         document.getElementById('videoContainer').appendChild(iframe);
     });
     </script>
